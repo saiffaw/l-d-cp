@@ -1,0 +1,27 @@
+ALGORITHM Solution_with_array
+VAR
+    set1,set2,i,j: ARRAY_OF INTEGER;
+    sum:=0:INTEGER;
+BEGIN
+   WRITE("give the first set");
+   READ(set1);
+   WRITE("give the second set");
+   READ(set2);
+  FOR i FROM 0 TO set1.length-1 STEP 1  DO
+
+         IF (set2.indexOf(set1[i]) <> -1) THEN
+             sum:=sum+set1[i];
+         END_IF
+  END_FOR
+
+   FOR j FROM 0 TO set2.length-1 STEP 1  DO
+      IF (set1.indexOf(set2[j]) <> -1) THEN
+           sum:=sum+set2[j];
+      END_IF
+   END_FOR
+
+  WRITE("Sum of overlapping elements:",sum);
+
+END
+
+

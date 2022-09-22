@@ -1,0 +1,32 @@
+ALGORITHM Solution_with_hush_table
+VAR
+   htab : HASH_TABLE<INTEGER,INTEGER>;
+   set1,set2,merged_set,result : ARRAY ;
+   i,count,sum:=0 : INTEGER;
+    
+BEGIN
+   READ(set1);
+   READ(set2);
+
+   merged_set:= CONCAT(set1,set2)
+
+   FOR i FROM 0 TO merged_set.length -1 STEP 1  DO
+       IF (htab.lookup(merged_set[i]) = TRUE) THEN
+           count := htab.get(merged_set[i]);
+           htab.insert(merged_set[i],count+1);
+       ELSE
+           htab.insert(merged_set[i],1);
+       END_IF
+   END_FOR
+
+   FOR i FROM 0 TO merged_set.length -1 STEP 1  DO
+       IF (htab.get(merged_set[i]) = 1) THEN
+           result := push(merged_set[i]);
+           sum:=sum+merged_set[i];
+           
+       END_IF
+   END_FOR
+
+   WRITE("distinct elements =>",result);
+   WRITE("The sum is => ",sum)
+END
